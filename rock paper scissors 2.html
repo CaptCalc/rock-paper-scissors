@@ -38,20 +38,6 @@ let rounds = 0;
 let userScore = 0;
 let compScore = 0;
 
-
-
-//Event Listeners for Buttons
-const btns = document.querySelectorAll('.btn-dark');
-
-let userPlay = btns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    let userPlay = event.target.textContent.toLowerCase();
-
-    console.log(userPlay);
-  })
-})
-
-
 // Computer selection
 function computerPlay() { 
   const compResult = choices[Math.floor(Math.random() * choices.length)];
@@ -75,6 +61,29 @@ function playRound(userPlay, computerPlay) {
       userScore += 1;   
   }
 }
+
+//Event Listeners for Buttons.
+const btns = document.querySelectorAll('.btn-dark');
+
+let userPlay = btns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    //store user choice in variable
+    let userPlay = event.target.textContent.toLowerCase();
+    return userPlay;
+
+
+    // play a round
+
+    playRound(userPlay, computerPlay();
+
+
+  })
+})
+
+
+
+
+
 
 </script>
 
