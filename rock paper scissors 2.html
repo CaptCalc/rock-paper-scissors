@@ -45,14 +45,15 @@ function computerPlay() {
 }
 
 // Compare User Input with Computer Choice and decide round winner
-function playRound(userPlay, computerPlay) {
+
+function playRound(userPlay, compResult) {
   switch(true) {
-    case (userPlay === computerPlay): 
+    case (userPlay === compResult): 
       console.log("ooo, nice try, it was a draw!");
         break;
-    case (computerPlay == "rock" && userPlay == "scissor"):
-    case (computerPlay == "scissors" && userPlay == "paper"):
-    case (computerPlay == "paper" && userPlay == "rock"):
+    case (compResult == "rock" && userPlay == "scissor"):
+    case (compResult == "scissors" && userPlay == "paper"):
+    case (compResult == "paper" && userPlay == "rock"):
       console.log("Wow, beaten by a simple game...");
       compScore += 1; 
         break;
@@ -62,21 +63,17 @@ function playRound(userPlay, computerPlay) {
   }
 }
 
+
 //Event Listeners for Buttons.
 const btns = document.querySelectorAll('.btn-dark');
 
-let userPlay = btns.forEach((btn) => {
+btns.forEach((btn) => {
   btn.addEventListener('click', () => {
-    //store user choice in variable
     let userPlay = event.target.textContent.toLowerCase();
-    return userPlay;
-
 
     // play a round
 
-    playRound(userPlay, computerPlay();
-
-
+    playRound(userPlay, computerPlay());
   })
 })
 
