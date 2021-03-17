@@ -10,43 +10,45 @@
 </head>
 
 <body>
-
   <div class="container m-5">
-  <div class="row">
-    <div class="col-5 selection">
-      <h3 class="display-4 text-center">Choose a Weapon</h3>
-      <hr>
-      <div class="d-flex p-2 justify-content-around">
-        <button class="btn btn-dark p-3 rock">Rock</button>
-        <button class="btn btn-dark p-3 paper">Paper</button>
-        <button class="btn btn-dark p-3 scissors">Scissors</button>
+    <div class="row">
+      <div class="col-6 selection">
+        <h3 class="display-4 text-center">Choose a Weapon</h3>
+        <hr>
+        <div class="d-flex p-2 justify-content-around">
+          <button class="btn btn-dark p-3 rock">Rock</button>
+          <button class="btn btn-dark p-3 paper">Paper</button>
+          <button class="btn btn-dark p-3 scissors">Scissors</button>
+        </div>
+        <div class="text-center player-select">
+
+        </div>
+      </div>
+      <div class="col-6">
+        <p class="display-4 text-center">Well Played</p>
       </div>
     </div>
-    <div class="col-7">
-      <p class="display-4 text-center">Well Played</p>
-    </div>
-  </div>
   </div>
 
 
 <script>
-
-
 // Define variables
 let choices = ["rock", "paper", "scissors"];
 let rounds = 0;
 let userScore = 0;
 let compScore = 0;
+const btns = document.querySelectorAll('.btn-dark');
 
-// Computer selection
+// Computer Random Choice
 function computerPlay() { 
   const compResult = choices[Math.floor(Math.random() * choices.length)];
   return compResult;
 }
 
-// Compare User Input with Computer Choice and decide round winner
 
+// Compare User Input with Computer Choice and decide round winner
 function playRound(userPlay, compResult) {
+
   switch(true) {
     case (userPlay === compResult): 
       console.log("ooo, nice try, it was a draw!");
@@ -61,26 +63,45 @@ function playRound(userPlay, compResult) {
     console.log("Great play, humanity is safe from AI with you on our side");
       userScore += 1;   
   }
+
 }
 
 
-//Event Listeners for Buttons.
-const btns = document.querySelectorAll('.btn-dark');
+// Calculate the overall winner
+function decideWinner(userScore, compScore) {
+  if (compScore > userScore) {
+    alert('Unlucky, you lost');
+  } else if (userScore > compScore) {
+    alert('Congratulations. You WON!');
+  } else {
+    alert('Draw! wow, thats some slim chance right there');
+  }
+}
 
-btns.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    let userPlay = event.target.textContent.toLowerCase();
 
-    // play a round
 
-    playRound(userPlay, computerPlay());
+//Check how many rounds
+function endGame() {
+  if(rounds = 5) {
+    btns.forEach((btn) => {
+      btn.classList.add('disabled');
+    })
+  }
+}
+
+//Begin Game on User button
+
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        let userPlay = event.target.textContent.toLowerCase();
+        // play a round
+        playRound(userPlay, computerPlay());
+        endGame();
+    })
   })
-})
 
-
-
-
-
+  
 
 </script>
 
