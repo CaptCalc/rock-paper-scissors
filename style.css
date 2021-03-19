@@ -1,3 +1,9 @@
-.selection {
-  background-color: aquamarine;
+
+.game {
+  height: 75vh;
+}
+
+#result-img {
+  width: 100%;
+  height: auto;
 }

@@ -10,99 +10,47 @@
 </head>
 
 <body>
-  <div class="container m-5">
-    <div class="row">
-      <div class="col-6 selection">
-        <h3 class="display-4 text-center">Choose a Weapon</h3>
-        <hr>
-        <div class="d-flex p-2 justify-content-around">
-          <button class="btn btn-dark p-3 rock">Rock</button>
-          <button class="btn btn-dark p-3 paper">Paper</button>
-          <button class="btn btn-dark p-3 scissors">Scissors</button>
-        </div>
-        <div class="text-center player-select">
 
+<!--Header intro-->
+<header class="bg-dark text-danger text-center p-4 border-white border-bottom">
+  <h2 class="h2" id = "welc-msg">I'd like to play a game</h2>
+</header>
+
+  <!--CONTENT: GAME AND DISPLAY-->
+  <div class="container-fluid">
+    <div class="row game">
+      <div class="col-4 bg-dark text-white selection">
+        <h3 class="h3 text-center mt-4">Choose a Weapon</h3>
+        <hr>
+        <div class="d-flex p-2 justify-content-around m-4">
+          <button class="btn btn-dark p-3 border-white rock">Rock</button>
+          <button class="btn btn-dark p-3 border-white paper">Paper</button>
+          <button class="btn btn-dark p-3 border-white scissors">Scissors</button>
+        </div>
+        <div>
+          <p class="lead">You have selected:</p>
+        </div>
+        <div class="player-select lead">
+          
         </div>
       </div>
-      <div class="col-6">
-        <p class="display-4 text-center">Well Played</p>
+      <div class="col-8 bg-dark text-light text-center py-5">
+        <p id="result-text" class="h3"></p>
+        <img class="img-fluid" id="result-img"  alt="">
       </div>
+    </div>
+
+    <div class="row bg-dark text-white border-top border-white border-bottom p-5 text-center">
+      <h4 class="h4">This is the result</h4>
+
     </div>
   </div>
 
 
-<script>
-// Define variables
-let choices = ["rock", "paper", "scissors"];
-let rounds = 0;
-let userScore = 0;
-let compScore = 0;
-const btns = document.querySelectorAll('.btn-dark');
-
-// Computer Random Choice
-function computerPlay() { 
-  const compResult = choices[Math.floor(Math.random() * choices.length)];
-  return compResult;
-}
-
-
-// Compare User Input with Computer Choice and decide round winner
-function playRound(userPlay, compResult) {
-
-  switch(true) {
-    case (userPlay === compResult): 
-      console.log("ooo, nice try, it was a draw!");
-        break;
-    case (compResult == "rock" && userPlay == "scissor"):
-    case (compResult == "scissors" && userPlay == "paper"):
-    case (compResult == "paper" && userPlay == "rock"):
-      console.log("Wow, beaten by a simple game...");
-      compScore += 1; 
-        break;
-    default:
-    console.log("Great play, humanity is safe from AI with you on our side");
-      userScore += 1;   
-  }
-
-}
-
-
-// Calculate the overall winner
-function decideWinner(userScore, compScore) {
-  if (compScore > userScore) {
-    alert('Unlucky, you lost');
-  } else if (userScore > compScore) {
-    alert('Congratulations. You WON!');
-  } else {
-    alert('Draw! wow, thats some slim chance right there');
-  }
-}
 
 
 
-//Check how many rounds
-function endGame() {
-  if(rounds = 5) {
-    btns.forEach((btn) => {
-      btn.classList.add('disabled');
-    })
-  }
-}
-
-//Begin Game on User button
-
-
-  btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        let userPlay = event.target.textContent.toLowerCase();
-        // play a round
-        playRound(userPlay, computerPlay());
-        endGame();
-    })
-  })
-
-  
-
+<script src="script.js">
 </script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
